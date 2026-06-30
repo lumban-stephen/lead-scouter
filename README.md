@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lead Scouter
 
-## Getting Started
+**Find B2B leads. Score their site. Move fast.**
 
-First, run the development server:
+Lead Scouter is a sleek Next.js SaaS-style lead discovery app that turns a business name or website URL into a quick prospecting workflow:
+
+- **Business search** via SERP API
+- **Instant SEO / performance analysis** via PageSpeed Insights
+- **Simple password gate** for private access
+- **Vercel-ready** deployment with server-side API routes
+
+## What it does
+
+Paste a company name to discover top search results, or drop in a URL to jump straight into analysis. Lead Scouter then surfaces a fast, polished readout of a site's technical health and opportunity score.
+
+## Features
+
+- Premium SaaS-inspired UI
+- Server-side proxy routes for third-party APIs
+- Search result filtering to remove noisy domains
+- PageSpeed score breakdown with recommendations
+- Private dashboard access via app password
+
+## Stack
+
+- **Next.js 16**
+- **React 19**
+- **Tailwind CSS**
+- **shadcn/ui**
+- **Lucide React**
+
+## Local setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `.env.local`:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+SERP_API_KEY=your_serp_api_key_here
+PAGESPEED_API_KEY=your_pagespeed_api_key_here
+APP_PASSWORD=your_secure_password
+```
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push the repo to GitHub.
+2. Import it into Vercel.
+3. Add the environment variables in the Vercel project settings.
+4. Deploy.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No separate backend required — the API routes run on Vercel.
+
+## Notes
+
+- Keep `.env.local` out of git.
+- `.env.example` is included as a template.
+- The app is designed to feel like a lightweight SaaS product, not a generic SEO tool.
