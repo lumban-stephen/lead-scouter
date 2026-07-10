@@ -12,20 +12,32 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
-import { LayoutDashboard, Compass, LineChart, Bookmark, FileText, Settings, Target } from 'lucide-react'
+import { LayoutDashboard, Bookmark, Target, MapPin } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useLeads } from '@/hooks/use-leads'
 
 const items = [
   {
     title: 'Dashboard',
     url: '/',
     icon: LayoutDashboard,
-  }
+  },
+  {
+    title: 'Discover',
+    url: '/discover',
+    icon: MapPin,
+  },
+  {
+    title: 'Saved Leads',
+    url: '/leads',
+    icon: Bookmark,
+  },
 ]
 
 export function AppSidebar() {
   const pathname = usePathname()
+  const { leads } = useLeads()
 
   return (
     <Sidebar>
@@ -47,6 +59,11 @@ export function AppSidebar() {
                     <SidebarMenuButton isActive={isActive} tooltip={item.title} render={<Link href={item.url} />}>
                       <item.icon />
                       <span>{item.title}</span>
+                      {item.url === '/leads' && leads.length > 0 && (
+                        <span className="ml-auto text-xs rounded-full bg-primary/10 text-primary px-1.5 py-0.5">
+                          {leads.length}
+                        </span>
+                      )}
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 )
